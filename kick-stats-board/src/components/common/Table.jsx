@@ -1,6 +1,24 @@
+import { useState } from "react";
 import "./Table.css";
+import Pagination from "./Pagination";
 
-const Table = ({ columns, data }) => {
+const Table = ({ columns, data, rowsPerPage = 5 }) => {
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const handlePrevious = () => {
+    setCurrentPage((prevPage) => Math.max(prevPage - 1, 0));
+  };
+
+  const handleNext = () => {
+    setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages - 1));
+  };
+
+  const totalPages = Math.ceil(data.length / rowsPerPage);
+  const paginatedData = data.slice(
+    currentPage * rowsPerPage,
+    currentPage * rowsPerPage + rowsPerPage
+  );
+
   return (
     <div className="table-container">
       <table>
@@ -17,7 +35,7 @@ const Table = ({ columns, data }) => {
               <td colSpan={columns.length}>No data available</td>
             </tr>
           ) : (
-            data.map((row, rowIndex) => (
+            paginatedData.map((row, rowIndex) => (
               <tr key={rowIndex}>
                 {columns.map((column) => {
                   const value = row[column.id];
@@ -32,6 +50,13 @@ const Table = ({ columns, data }) => {
           )}
         </tbody>
       </table>
+
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPrevious={handlePrevious}
+        onNext={handleNext}
+      />
     </div>
   );
 };
