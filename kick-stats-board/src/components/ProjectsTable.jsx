@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { formatValue } from "../utils/formatters";
+import { projectColumns } from "../configs/columnsConfig";
 import dummyData from "../../../frontend-assignment.json";
 import Table from "./common/Table";
 
@@ -34,27 +34,6 @@ const ProjectsTable = () => {
     }
   };
 
-  const columns = [
-    {
-      id: "sno",
-      label: "S.No.",
-    },
-    {
-      id: "title",
-      label: "Title",
-    },
-    {
-      id: "percentageFunded",
-      label: "Percentage Funded",
-      format: (value) => formatValue(value, "percentage"),
-    },
-    {
-      id: "amountPledged",
-      label: "Amount Pledged",
-      format: (value) => formatValue(value, "currency"),
-    },
-  ];
-
   const getTransformedProjectData = (data) => {
     return data.map((project) => ({
       sno: project["s.no"],
@@ -68,7 +47,7 @@ const ProjectsTable = () => {
     <div>
       <h1>Kickstarter Projects Table</h1>
       <p>{isLoading && "Loading projects..."}</p>
-      <Table columns={columns} data={projects} />
+      <Table columns={projectColumns} data={projects} />
     </div>
   );
 };
