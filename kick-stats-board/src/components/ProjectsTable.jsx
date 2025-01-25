@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import dummyData from "../../../../frontend-assignment.json";
+import dummyData from "../../../frontend-assignment.json";
 
 const ProjectsTable = () => {
   const [projects, setProjects] = useState([]);
