@@ -1,6 +1,6 @@
 import "./Table.css";
 
-const Table = ({ columns, data }) => {
+const Table = ({ columns, data, isLoading, rowsPerPage }) => {
   return (
     <div className="table-container">
       <table>
@@ -12,24 +12,30 @@ const Table = ({ columns, data }) => {
           </tr>
         </thead>
         <tbody>
-          {data.length === 0 ? (
-            <tr>
-              <td colSpan={columns.length}>No data available</td>
-            </tr>
-          ) : (
-            data.map((row, rowIndex) => (
-              <tr key={rowIndex}>
-                {columns.map((column) => {
-                  const value = row[column.id];
-                  return (
-                    <td key={`${rowIndex}-${column.id}`}>
-                      {column.format ? column.format(value) : value}
-                    </td>
-                  );
-                })}
-              </tr>
-            ))
-          )}
+          {isLoading
+            ? Array(rowsPerPage)
+                .fill(null)
+                .map((_, index) => (
+                  <tr key={index}>
+                    {columns.map((column) => (
+                      <td key={column.id}>
+                        <div className="skeleton"></div>
+                      </td>
+                    ))}
+                  </tr>
+                ))
+            : data.map((row, rowIndex) => (
+                <tr key={rowIndex}>
+                  {columns.map((column) => {
+                    const value = row[column.id];
+                    return (
+                      <td key={`${rowIndex}-${column.id}`}>
+                        {column.format ? column.format(value) : value}
+                      </td>
+                    );
+                  })}
+                </tr>
+              ))}
         </tbody>
       </table>
     </div>

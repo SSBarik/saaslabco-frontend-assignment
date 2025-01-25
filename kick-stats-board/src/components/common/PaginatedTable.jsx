@@ -3,7 +3,13 @@ import Table from "./Table";
 import Pagination from "./Pagination";
 import "./PaginatedTable.css";
 
-const PaginatedTable = ({ columns, data, rowsPerPage = 5, onPageChange }) => {
+const PaginatedTable = ({
+  columns,
+  data,
+  isLoading,
+  rowsPerPage = 5,
+  onPageChange,
+}) => {
   const [currentPage, setCurrentPage] = useState(0);
 
   const handlePageChange = (page) => {
@@ -35,7 +41,12 @@ const PaginatedTable = ({ columns, data, rowsPerPage = 5, onPageChange }) => {
 
   return (
     <div className="paginated-table">
-      <Table columns={columns} data={paginatedData} />
+      <Table
+        columns={columns}
+        data={paginatedData}
+        isLoading={isLoading}
+        rowsPerPage={rowsPerPage}
+      />
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}

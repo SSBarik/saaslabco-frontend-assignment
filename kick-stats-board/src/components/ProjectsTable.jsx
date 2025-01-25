@@ -22,6 +22,9 @@ const ProjectsTable = () => {
 
       // const data = response.data;
 
+      // Temp dummy delay
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+
       // Temp dummy data
       const data = getTransformedProjectData(dummyData);
       console.log("Projects: ", data);
@@ -45,9 +48,12 @@ const ProjectsTable = () => {
 
   return (
     <div>
-      <h1>Kickstarter Projects Table</h1>
       <p>{isLoading && "Loading projects..."}</p>
-      <PaginatedTable columns={projectColumns} data={projects} />
+      <PaginatedTable
+        columns={projectColumns}
+        data={projects}
+        isLoading={isLoading}
+      />
     </div>
   );
 };
