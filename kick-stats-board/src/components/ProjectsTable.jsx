@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { projectColumns } from "../configs/columnsConfig";
 import dummyData from "../../../frontend-assignment.json";
-import Table from "./common/Table";
+import PaginatedTable from "./common/PaginatedTable";
 
 const ProjectsTable = () => {
   const [projects, setProjects] = useState([]);
@@ -47,7 +47,7 @@ const ProjectsTable = () => {
     <div>
       <h1>Kickstarter Projects Table</h1>
       <p>{isLoading && "Loading projects..."}</p>
-      <Table columns={projectColumns} data={projects} />
+      <PaginatedTable columns={projectColumns} data={projects} />
     </div>
   );
 };
