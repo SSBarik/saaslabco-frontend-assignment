@@ -5,16 +5,22 @@ import Pagination from "./Pagination";
 const PaginatedTable = ({ columns, data, rowsPerPage = 5, onPageChange }) => {
   const [currentPage, setCurrentPage] = useState(0);
 
+  const handlePageChange = (page) => {
+    if (onPageChange) {
+      onPageChange(page);
+    }
+  };
+
   const handlePrevious = () => {
     const prevPage = Math.max(currentPage - 1, 0);
     setCurrentPage(prevPage);
-    onPageChange(prevPage);
+    handlePageChange(prevPage);
   };
 
   const handleNext = () => {
     const nextPage = Math.min(currentPage + 1, totalPages - 1);
     setCurrentPage(nextPage);
-    onPageChange(nextPage);
+    handlePageChange(prevPage);
   };
 
   const totalPages = Math.ceil(data.length / rowsPerPage);
