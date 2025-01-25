@@ -2,31 +2,33 @@ import "./Table.css";
 
 const Table = ({ columns, data }) => {
   return (
-    <table>
-      <thead>
-        <tr>
-          {columns.map((column) => (
-            <th key={column.id}>{column.label}</th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {data.length === 0 ? (
+    <div className="table-container">
+      <table>
+        <thead>
           <tr>
-            <td colSpan={columns.length}>No data available</td>
+            {columns.map((column) => (
+              <th key={column.id}>{column.label}</th>
+            ))}
           </tr>
-        ) : (
-          data.map((row, rowIndex) => (
-            <tr key={rowIndex}>
-              {columns.map((column) => {
-                const value = row[column.id];
-                return <td key={`${rowIndex}-${column.id}`}>{value}</td>;
-              })}
+        </thead>
+        <tbody>
+          {data.length === 0 ? (
+            <tr>
+              <td colSpan={columns.length}>No data available</td>
             </tr>
-          ))
-        )}
-      </tbody>
-    </table>
+          ) : (
+            data.map((row, rowIndex) => (
+              <tr key={rowIndex}>
+                {columns.map((column) => {
+                  const value = row[column.id];
+                  return <td key={`${rowIndex}-${column.id}`}>{value}</td>;
+                })}
+              </tr>
+            ))
+          )}
+        </tbody>
+      </table>
+    </div>
   );
 };
 
