@@ -17,6 +17,9 @@ const PaginatedTable = ({ columns, data, rowsPerPage = 5, onPageChange }) => {
     handlePageChange(prevPage);
   };
 
+  const handleFirst = () => setCurrentPage(0);
+  const handleLast = () => setCurrentPage(totalPages - 1);
+
   const handleNext = () => {
     const nextPage = Math.min(currentPage + 1, totalPages - 1);
     setCurrentPage(nextPage);
@@ -37,6 +40,9 @@ const PaginatedTable = ({ columns, data, rowsPerPage = 5, onPageChange }) => {
         totalPages={totalPages}
         onPrevious={handlePrevious}
         onNext={handleNext}
+        onFirst={handleFirst}
+        onLast={handleLast}
+        rowsPerPage={rowsPerPage}
       />
     </div>
   );
