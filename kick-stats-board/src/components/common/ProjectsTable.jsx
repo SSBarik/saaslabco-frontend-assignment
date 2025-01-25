@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import dummyData from "../../../../frontend-assignment.json";
 
 const ProjectsTable = () => {
   const [projects, setProjects] = useState([]);
@@ -13,11 +14,14 @@ const ProjectsTable = () => {
     try {
       setIsLoading(true);
 
-      const response = await axios.get(
-        "https://raw.githubusercontent.com/saaslabsco/frontend-assignment/refs/heads/master/frontend-assignment.json"
-      );
+      // const response = await axios.get(
+      //   "https://raw.githubusercontent.com/saaslabsco/frontend-assignment/refs/heads/master/frontend-assignment.json"
+      // );
 
-      const data = response.data;
+      // const data = response.data;
+
+      // Temp dummy data
+      const data = dummyData;
       console.log("Projects: ", data);
 
       setProjects(data);
