@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import dummyData from "../../../frontend-assignment.json";
+import Table from "./common/Table";
 
 const ProjectsTable = () => {
   const [projects, setProjects] = useState([]);
@@ -21,7 +22,7 @@ const ProjectsTable = () => {
       // const data = response.data;
 
       // Temp dummy data
-      const data = dummyData;
+      const data = getTransformedProjectData(dummyData);
       console.log("Projects: ", data);
 
       setProjects(data);
@@ -32,10 +33,39 @@ const ProjectsTable = () => {
     }
   };
 
+  const columns = [
+    {
+      id: "sno",
+      label: "S.No.",
+    },
+    {
+      id: "title",
+      label: "Title",
+    },
+    {
+      id: "percentageFunded",
+      label: "Percentage Funded",
+    },
+    {
+      id: "amountPledged",
+      label: "Amount Pledged",
+    },
+  ];
+
+  const getTransformedProjectData = (data) => {
+    return data.map((project) => ({
+      sno: project["s.no"],
+      title: project.title,
+      percentageFunded: project["percentage.funded"],
+      amountPledged: project["amt.pledged"],
+    }));
+  };
+
   return (
     <div>
       <h1>Kickstarter Projects Table</h1>
       <p>{isLoading && "Loading projects..."}</p>
+      <Table columns={columns} data={projects} />
     </div>
   );
 };
