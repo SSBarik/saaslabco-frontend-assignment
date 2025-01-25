@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { formatValue } from "../utils/formatters";
 import dummyData from "../../../frontend-assignment.json";
 import Table from "./common/Table";
 
@@ -45,10 +46,12 @@ const ProjectsTable = () => {
     {
       id: "percentageFunded",
       label: "Percentage Funded",
+      format: (value) => formatValue(value, "percentage"),
     },
     {
       id: "amountPledged",
       label: "Amount Pledged",
+      format: (value) => formatValue(value, "currency"),
     },
   ];
 

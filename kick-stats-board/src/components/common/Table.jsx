@@ -21,7 +21,11 @@ const Table = ({ columns, data }) => {
               <tr key={rowIndex}>
                 {columns.map((column) => {
                   const value = row[column.id];
-                  return <td key={`${rowIndex}-${column.id}`}>{value}</td>;
+                  return (
+                    <td key={`${rowIndex}-${column.id}`}>
+                      {column.format ? column.format(value) : value}
+                    </td>
+                  );
                 })}
               </tr>
             ))
