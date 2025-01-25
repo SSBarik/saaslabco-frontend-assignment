@@ -7,7 +7,15 @@ const Table = ({ columns, data, isLoading, rowsPerPage }) => {
         <thead>
           <tr>
             {columns.map((column) => (
-              <th key={column.id}>{column.label}</th>
+              <th
+                key={column.id}
+                style={{
+                  minWidth: column.minWidth,
+                  textAlign: column.align,
+                }}
+              >
+                {column.label}
+              </th>
             ))}
           </tr>
         </thead>
@@ -29,7 +37,12 @@ const Table = ({ columns, data, isLoading, rowsPerPage }) => {
                   {columns.map((column) => {
                     const value = row[column.id];
                     return (
-                      <td key={`${rowIndex}-${column.id}`}>
+                      <td
+                        key={`${rowIndex}-${column.id}`}
+                        style={{
+                          textAlign: column.align,
+                        }}
+                      >
                         {column.format ? column.format(value) : value}
                       </td>
                     );
