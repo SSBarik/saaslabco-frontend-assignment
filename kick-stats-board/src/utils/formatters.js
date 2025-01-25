@@ -1,6 +1,7 @@
-export const formatCurrency = (value) => {
+export const formatCurrency = (value, currency = "USD") => {
   if (typeof value !== "number") return "";
-  return `$${value.toLocaleString()}`;
+
+  return `${currency.toUpperCase()} ${new Intl.NumberFormat().format(value)}`;
 };
 
 export const formatPercentage = (value) => {
@@ -13,10 +14,10 @@ const formatters = {
   percentage: formatPercentage,
 };
 
-export const formatValue = (value, formatType) => {
+export const formatValue = (value, formatType, currency = "USD") => {
   const formatter = formatters[formatType];
   if (formatter) {
-    return formatter(value);
+    return formatter(value, currency);
   }
   return value;
 };
