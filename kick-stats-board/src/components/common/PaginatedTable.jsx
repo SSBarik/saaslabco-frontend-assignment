@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Table from "./Table";
 import Pagination from "./Pagination";
+import "./PaginatedTable.css";
 
 const PaginatedTable = ({ columns, data, rowsPerPage = 5, onPageChange }) => {
   const [currentPage, setCurrentPage] = useState(0);
@@ -33,7 +34,7 @@ const PaginatedTable = ({ columns, data, rowsPerPage = 5, onPageChange }) => {
   );
 
   return (
-    <div>
+    <div className="paginated-table">
       <Table columns={columns} data={paginatedData} />
       <Pagination
         currentPage={currentPage}
