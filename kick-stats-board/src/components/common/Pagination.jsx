@@ -16,6 +16,7 @@ const Pagination = ({
   onNext,
   onLast,
   rowsPerPage = 5,
+  isLoading,
 }) => {
   const isFirstPage = currentPage === 0;
   const isLastPage = currentPage === totalPages - 1;
@@ -27,14 +28,16 @@ const Pagination = ({
 
   return (
     <div className="pagination-container">
-      <div className="pagination-info">
-        {startItem} - {endItem} of {totalPages * rowsPerPage}
-      </div>
+      {!isLoading && (
+        <div className="pagination-info">
+          {startItem} - {endItem} of {totalPages * rowsPerPage}
+        </div>
+      )}
 
       <div className="pagination-controls">
         <button
           onClick={onFirst}
-          disabled={isFirstPage}
+          disabled={isLoading || isFirstPage}
           className="pagination-button"
         >
           <MdFirstPage />
@@ -42,7 +45,7 @@ const Pagination = ({
 
         <button
           onClick={onPrevious}
-          disabled={isFirstPage}
+          disabled={isLoading || isFirstPage}
           className="pagination-button"
         >
           <MdChevronLeft />
@@ -50,7 +53,7 @@ const Pagination = ({
 
         <button
           onClick={onNext}
-          disabled={isLastPage}
+          disabled={isLoading || isLastPage}
           className="pagination-button"
         >
           <MdChevronRight />
@@ -58,7 +61,7 @@ const Pagination = ({
 
         <button
           onClick={onLast}
-          disabled={isLastPage}
+          disabled={isLoading || isLastPage}
           className="pagination-button"
         >
           <MdLastPage />

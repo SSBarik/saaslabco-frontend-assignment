@@ -48,7 +48,6 @@ const ProjectsTable = () => {
 
   return (
     <div>
-      <p>{isLoading && "Loading projects..."}</p>
       <PaginatedTable
         columns={projectColumns}
         data={projects}

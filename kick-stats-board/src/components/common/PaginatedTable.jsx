@@ -55,6 +55,7 @@ const PaginatedTable = ({
         onFirst={handleFirst}
         onLast={handleLast}
         rowsPerPage={rowsPerPage}
+        isLoading={isLoading}
       />
     </div>
   );
