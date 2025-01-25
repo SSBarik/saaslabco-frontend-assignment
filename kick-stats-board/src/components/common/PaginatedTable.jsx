@@ -2,15 +2,19 @@ import { useState } from "react";
 import Table from "./Table";
 import Pagination from "./Pagination";
 
-const PaginatedTable = ({ columns, data, rowsPerPage = 5 }) => {
+const PaginatedTable = ({ columns, data, rowsPerPage = 5, onPageChange }) => {
   const [currentPage, setCurrentPage] = useState(0);
 
   const handlePrevious = () => {
-    setCurrentPage((prevPage) => Math.max(prevPage - 1, 0));
+    const prevPage = Math.max(currentPage - 1, 0);
+    setCurrentPage(prevPage);
+    onPageChange(prevPage);
   };
 
   const handleNext = () => {
-    setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages - 1));
+    const nextPage = Math.min(currentPage + 1, totalPages - 1);
+    setCurrentPage(nextPage);
+    onPageChange(nextPage);
   };
 
   const totalPages = Math.ceil(data.length / rowsPerPage);
