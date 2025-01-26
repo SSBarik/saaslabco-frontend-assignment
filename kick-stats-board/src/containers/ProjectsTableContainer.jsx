@@ -1,8 +1,11 @@
 import { FETCH_PROJECTS_URL, RECORDS_PER_PAGE } from "@configs/constant";
 import { projectColumns } from "@configs/columnsConfig";
 import { projectCustomStyles } from "@configs/stylesConfig";
+
 import { transformProjectData } from "@utils/dataTransformers";
+
 import useFetchData from "@hooks/useFetchData";
+
 import PaginatedTable from "@components/common/paginated-table/PaginatedTable";
 
 const ProjectsTableContainer = () => {
@@ -22,7 +25,7 @@ const ProjectsTableContainer = () => {
         customStyles={projectCustomStyles}
       />
 
-      {/* Temporary alert for error. Will replace with better UI like toasters */}
+      {/* Temporary alert for error. Will replace with better UX like toast */}
       {error && alert(error)}
     </article>
   );

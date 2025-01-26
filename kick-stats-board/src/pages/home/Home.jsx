@@ -1,5 +1,5 @@
-import "./Home.css";
 import ProjectsTableContainer from "@containers/ProjectsTableContainer";
+import "./Home.css";
 
 const Home = () => {
   return (
