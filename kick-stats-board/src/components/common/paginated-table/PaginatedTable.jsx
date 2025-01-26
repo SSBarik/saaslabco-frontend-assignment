@@ -57,6 +57,7 @@ const PaginatedTable = ({
         onFirst={handleFirst}
         onLast={handleLast}
         rowsPerPage={rowsPerPage}
+        totalRecords={data.length}
         isLoading={isLoading}
       />
     </div>
