@@ -1,4 +1,4 @@
-import { FETCH_PROJECTS_URL } from "@configs/constant";
+import { FETCH_PROJECTS_URL, RECORDS_PER_PAGE } from "@configs/constant";
 import { projectColumns } from "@configs/columnsConfig";
 import { projectCustomStyles } from "@configs/stylesConfig";
 import { transformProjectData } from "@utils/dataTransformers";
@@ -14,13 +14,16 @@ const ProjectsTableContainer = () => {
 
   return (
     <article>
-      {error && alert(error)}
       <PaginatedTable
         columns={projectColumns}
         data={projects}
+        rowsPerPage={RECORDS_PER_PAGE}
         isLoading={isLoading}
         customStyles={projectCustomStyles}
       />
+
+      {/* Temporary alert for error. Will replace with better UI like toasters */}
+      {error && alert(error)}
     </article>
   );
 };
