@@ -1,12 +1,13 @@
 .table-container {
-  overflow-x: auto;
-  background-color: #ffffff;
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
   border-radius: 8px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 table {
   width: 100%;
+  min-width: "600px";
   border-collapse: collapse;
   background-color: #fff;
 }
