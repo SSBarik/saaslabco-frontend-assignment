@@ -6,10 +6,8 @@ const Footer = () => {
   return (
     <footer className="footer">
       <p>
-        <p>
-          Highly Rated <span className="underline-text">Kickstarter</span>{" "}
-          Projects &copy; {currentYear}
-        </p>
+        Highly Rated <span className="underline-text">Kickstarter</span>{" "}
+        Projects &copy; {currentYear}
       </p>
     </footer>
   );

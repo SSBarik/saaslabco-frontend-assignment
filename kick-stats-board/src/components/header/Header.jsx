@@ -21,7 +21,7 @@ const Header = () => {
           className="icon-link"
           aria-label="View KickStats source code on GitHub"
         >
-          <FaGithub size={30} />
+          <FaGithub size={26} />
         </a>
       </div>
     </header>

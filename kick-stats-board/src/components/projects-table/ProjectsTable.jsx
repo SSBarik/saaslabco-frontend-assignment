@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { projectColumns } from "../configs/columnsConfig";
-import { projectCustomStyles } from "../configs/stylesConfig";
-import dummyData from "../../../frontend-assignment.json";
-import PaginatedTable from "./common/PaginatedTable";
+import { projectColumns } from "../../configs/columnsConfig";
+import { projectCustomStyles } from "../../configs/stylesConfig";
+import dummyData from "../../../../frontend-assignment.json";
+import PaginatedTable from "../common/paginated-table/PaginatedTable";
 
 const ProjectsTable = () => {
   const [projects, setProjects] = useState([]);
