@@ -41,7 +41,7 @@ const PaginatedTable = ({
   );
 
   return (
-    <section className="paginated-table">
+    <section className="paginated-table" aria-live="polite">
       <Table
         columns={columns}
         data={paginatedData}

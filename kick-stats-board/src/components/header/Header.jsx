@@ -16,7 +16,7 @@ const Header = () => {
         </a>
         <span className="spacer"></span>
         <a
-          href="https://github.com/SSBarik/saaslabco-frontend-assignment"
+          href="https://github.com/SSBarik/saaslabco-frontend-assignment/tree/master/kick-stats-board"
           target="_blank"
           className="icon-link"
           aria-label="View KickStats source code on GitHub"

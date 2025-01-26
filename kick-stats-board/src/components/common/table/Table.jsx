@@ -16,7 +16,7 @@ const Table = ({ columns, data, isLoading, rowsPerPage, customStyles }) => {
           <tr key={index}>
             {columns.map((column) => (
               <td key={column.id}>
-                <div className="skeleton"></div>
+                <div className="skeleton" aria-hidden="true"></div>
               </td>
             ))}
           </tr>
@@ -26,7 +26,7 @@ const Table = ({ columns, data, isLoading, rowsPerPage, customStyles }) => {
     if (!data.length) {
       return (
         <tr>
-          <td colSpan={columns.length} className="no-data">
+          <td colSpan={columns.length} className="no-data" role="alert">
             No data available
           </td>
         </tr>
@@ -39,8 +39,9 @@ const Table = ({ columns, data, isLoading, rowsPerPage, customStyles }) => {
         style={{
           "--custom-hover-color": hoverColor,
         }}
+        aria-rowindex={rowIndex + 1}
       >
-        {columns.map((column) => {
+        {columns.map((column, columnIndex) => {
           const value = row[column.id];
           return (
             <td
@@ -48,6 +49,7 @@ const Table = ({ columns, data, isLoading, rowsPerPage, customStyles }) => {
               style={{
                 textAlign: column.align,
               }}
+              aria-colindex={columnIndex + 1}
             >
               {column.format ? column.format(value) : value}
             </td>

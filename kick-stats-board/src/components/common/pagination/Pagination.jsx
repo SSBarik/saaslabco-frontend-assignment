@@ -48,6 +48,8 @@ const Pagination = ({
             onClick={controlButton.action}
             disabled={isLoading || controlButton.disabled || !hasData}
             className="pagination-button"
+            aria-label={controlButton.label}
+            tabIndex={0}
           >
             {controlButton.icon}
           </button>
