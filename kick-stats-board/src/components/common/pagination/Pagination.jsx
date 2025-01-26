@@ -26,46 +26,34 @@ const Pagination = ({
     totalPages * rowsPerPage
   );
 
+  const hasData = totalPages > 0;
+
+  const controlButtons = [
+    { action: onFirst, icon: <MdFirstPage />, disabled: isFirstPage },
+    { action: onPrevious, icon: <MdChevronLeft />, disabled: isFirstPage },
+    { action: onNext, icon: <MdChevronRight />, disabled: isLastPage },
+    { action: onLast, icon: <MdLastPage />, disabled: isLastPage },
+  ];
+
   return (
     <div className="pagination-container">
-      {!isLoading && (
+      {!isLoading && hasData && (
         <div className="pagination-info">
           {startItem} - {endItem} of {totalPages * rowsPerPage}
         </div>
       )}
 
       <div className="pagination-controls">
-        <button
-          onClick={onFirst}
-          disabled={isLoading || isFirstPage}
-          className="pagination-button"
-        >
-          <MdFirstPage />
-        </button>
-
-        <button
-          onClick={onPrevious}
-          disabled={isLoading || isFirstPage}
-          className="pagination-button"
-        >
-          <MdChevronLeft />
-        </button>
-
-        <button
-          onClick={onNext}
-          disabled={isLoading || isLastPage}
-          className="pagination-button"
-        >
-          <MdChevronRight />
-        </button>
-
-        <button
-          onClick={onLast}
-          disabled={isLoading || isLastPage}
-          className="pagination-button"
-        >
-          <MdLastPage />
-        </button>
+        {controlButtons.map((controlButton, index) => (
+          <button
+            key={index}
+            onClick={controlButton.action}
+            disabled={isLoading || controlButton.disabled || !hasData}
+            className="pagination-button"
+          >
+            {controlButton.icon}
+          </button>
+        ))}
       </div>
     </div>
   );
