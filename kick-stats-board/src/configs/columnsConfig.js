@@ -1,4 +1,5 @@
 import { formatValue } from "@utils/formatters";
+import { CURRENCY } from "./constant";
 
 export const projectColumns = [
   {
@@ -22,6 +23,6 @@ export const projectColumns = [
     id: "amountPledged",
     label: "Amount Pledged",
     minWidth: 150,
-    format: (value) => formatValue(value, "currency"),
+    format: (value) => formatValue(value, "currency", CURRENCY),
   },
 ];
