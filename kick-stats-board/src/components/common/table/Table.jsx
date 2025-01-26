@@ -8,6 +8,55 @@ const Table = ({ columns, data, isLoading, rowsPerPage, customStyles }) => {
     hoverColor = "#f9f9f9",
   } = customStyles || {};
 
+  const renderTableBody = () => {
+    if (isLoading) {
+      return Array(rowsPerPage)
+        .fill(null)
+        .map((_, index) => (
+          <tr key={index}>
+            {columns.map((column) => (
+              <td key={column.id}>
+                <div className="skeleton"></div>
+              </td>
+            ))}
+          </tr>
+        ));
+    }
+
+    if (!data.length) {
+      return (
+        <tr>
+          <td colSpan={columns.length} className="no-data">
+            No data available
+          </td>
+        </tr>
+      );
+    }
+
+    return data.map((row, rowIndex) => (
+      <tr
+        key={rowIndex}
+        style={{
+          "--custom-hover-color": hoverColor,
+        }}
+      >
+        {columns.map((column) => {
+          const value = row[column.id];
+          return (
+            <td
+              key={`${rowIndex}-${column.id}`}
+              style={{
+                textAlign: column.align,
+              }}
+            >
+              {column.format ? column.format(value) : value}
+            </td>
+          );
+        })}
+      </tr>
+    ));
+  };
+
   return (
     <div className="table-container">
       <table>
@@ -31,42 +80,7 @@ const Table = ({ columns, data, isLoading, rowsPerPage, customStyles }) => {
             ))}
           </tr>
         </thead>
-        <tbody>
-          {isLoading
-            ? Array(rowsPerPage)
-                .fill(null)
-                .map((_, index) => (
-                  <tr key={index}>
-                    {columns.map((column) => (
-                      <td key={column.id}>
-                        <div className="skeleton"></div>
-                      </td>
-                    ))}
-                  </tr>
-                ))
-            : data.map((row, rowIndex) => (
-                <tr
-                  key={rowIndex}
-                  style={{
-                    "--custom-hover-color": hoverColor,
-                  }}
-                >
-                  {columns.map((column) => {
-                    const value = row[column.id];
-                    return (
-                      <td
-                        key={`${rowIndex}-${column.id}`}
-                        style={{
-                          textAlign: column.align,
-                        }}
-                      >
-                        {column.format ? column.format(value) : value}
-                      </td>
-                    );
-                  })}
-                </tr>
-              ))}
-        </tbody>
+        <tbody>{renderTableBody()}</tbody>
       </table>
     </div>
   );

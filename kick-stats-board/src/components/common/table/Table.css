@@ -37,6 +37,11 @@ tbody td {
   text-align: left;
 }
 
+.no-data {
+  text-align: center;
+  padding: 2rem 0;
+}
+
 .skeleton {
   position: relative;
   overflow: hidden;
