@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { projectColumns } from "@configs/columnsConfig";
 import { projectCustomStyles } from "@configs/stylesConfig";
-import dummyData from "../../../../frontend-assignment.json";
+import dummyData from "../../../frontend-assignment.json";
 import PaginatedTable from "@components/common/paginated-table/PaginatedTable";
 
 const ProjectsTable = () => {
