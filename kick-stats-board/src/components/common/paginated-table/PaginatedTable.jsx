@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Table from "../table/Table";
-import Pagination from "../pagination/Pagination";
+import Table from "@components/common/table/Table";
+import Pagination from "@components/common/pagination/Pagination";
 import "./PaginatedTable.css";
 
 const PaginatedTable = ({

@@ -1,4 +1,4 @@
-import { formatValue } from "../utils/formatters";
+import { formatValue } from "@utils/formatters";
 
 export const projectColumns = [
   {

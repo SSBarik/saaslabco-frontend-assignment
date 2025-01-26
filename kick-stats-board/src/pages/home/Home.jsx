@@ -1,5 +1,5 @@
 import "./Home.css";
-import ProjectsTable from "../../components/projects-table/ProjectsTable";
+import ProjectsTable from "@components/projects-table/ProjectsTable";
 
 const Home = () => {
   return (
