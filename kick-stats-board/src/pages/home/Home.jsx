@@ -1,10 +1,10 @@
 import "./Home.css";
-import ProjectsTable from "@containers/ProjectsTable";
+import ProjectsTableContainer from "@containers/ProjectsTableContainer";
 
 const Home = () => {
   return (
     <main>
-      <ProjectsTable />
+      <ProjectsTableContainer />
     </main>
   );
 };
