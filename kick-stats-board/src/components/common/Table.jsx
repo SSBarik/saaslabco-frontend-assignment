@@ -1,10 +1,21 @@
+import React from "react";
 import "./Table.css";
 
-const Table = ({ columns, data, isLoading, rowsPerPage }) => {
+const Table = ({ columns, data, isLoading, rowsPerPage, customStyles }) => {
+  const {
+    theadBgColor = "#fff",
+    thColor = "#000",
+    hoverColor = "#f9f9f9",
+  } = customStyles || {};
+
   return (
     <div className="table-container">
       <table>
-        <thead>
+        <thead
+          style={{
+            backgroundColor: theadBgColor,
+          }}
+        >
           <tr>
             {columns.map((column) => (
               <th
@@ -12,6 +23,7 @@ const Table = ({ columns, data, isLoading, rowsPerPage }) => {
                 style={{
                   minWidth: column.minWidth,
                   textAlign: column.align,
+                  color: thColor,
                 }}
               >
                 {column.label}
@@ -33,7 +45,12 @@ const Table = ({ columns, data, isLoading, rowsPerPage }) => {
                   </tr>
                 ))
             : data.map((row, rowIndex) => (
-                <tr key={rowIndex}>
+                <tr
+                  key={rowIndex}
+                  style={{
+                    "--custom-hover-color": hoverColor,
+                  }}
+                >
                   {columns.map((column) => {
                     const value = row[column.id];
                     return (

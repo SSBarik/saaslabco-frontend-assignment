@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { projectColumns } from "../configs/columnsConfig";
+import { projectCustomStyles } from "../configs/stylesConfig";
 import dummyData from "../../../frontend-assignment.json";
 import PaginatedTable from "./common/PaginatedTable";
 
@@ -52,6 +53,7 @@ const ProjectsTable = () => {
         columns={projectColumns}
         data={projects}
         isLoading={isLoading}
+        customStyles={projectCustomStyles}
       />
     </div>
   );

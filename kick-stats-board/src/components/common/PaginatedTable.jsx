@@ -9,6 +9,7 @@ const PaginatedTable = ({
   isLoading,
   rowsPerPage = 5,
   onPageChange,
+  customStyles,
 }) => {
   const [currentPage, setCurrentPage] = useState(0);
 
@@ -46,6 +47,7 @@ const PaginatedTable = ({
         data={paginatedData}
         isLoading={isLoading}
         rowsPerPage={rowsPerPage}
+        customStyles={customStyles}
       />
       <Pagination
         currentPage={currentPage}

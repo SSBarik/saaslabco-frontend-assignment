@@ -4,6 +4,7 @@ export const projectColumns = [
   {
     id: "sno",
     label: "S.No.",
+    align: "center",
   },
   {
     id: "title",
