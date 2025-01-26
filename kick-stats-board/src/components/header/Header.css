@@ -1,5 +1,5 @@
 header {
-  background-color: #ffffff;
+  background-color: var(--background-color);
   padding: 1rem 0;
 }
 
@@ -16,7 +16,7 @@ header {
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: #333;
+  color: var(--text-color-primary);
   font-size: 1.5rem;
   font-weight: bold;
   font-family: monospace;
@@ -36,10 +36,10 @@ header {
   display: inline-flex;
   align-items: center;
   text-decoration: none;
-  color: inherit;
+  color: var(--text-color-primary);
   transition: color 0.2s ease-in-out;
 }
 
 .icon-link:hover {
-  color: #03ab6d;
+  color: var(--primary-color);
 }

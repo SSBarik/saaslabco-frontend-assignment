@@ -4,8 +4,8 @@
   align-items: center;
   width: 100%;
   padding: 8px 12px;
-  font-size: 14px;
-  background-color: #fff;
+  font-size: var(--font-size-regular);
+  background-color: var(--background-color);
   box-sizing: border-box;
 }
 
@@ -16,8 +16,8 @@
 }
 
 .pagination-info {
-  font-size: 14px;
-  color: #131212;
+  font-size: var(--font-size-regular);
+  color: var(--text-color-primary);
   margin-right: 20px;
 }
 
@@ -27,7 +27,7 @@
   height: 40px;
   border: none;
   background-color: transparent;
-  color: #555;
+  color: var(--text-color-primary);
   cursor: pointer;
   font-size: 24px;
   border-radius: 50%;
@@ -42,6 +42,6 @@
 }
 
 .pagination-button:disabled {
-  color: #bbb;
+  color: var(--text-color-disabled);
   cursor: not-allowed;
 }
