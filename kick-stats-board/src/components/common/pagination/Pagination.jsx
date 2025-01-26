@@ -34,11 +34,11 @@ const Pagination = ({
   ];
 
   return (
-    <div className="pagination-container">
+    <nav className="pagination-container" aria-label="Pagination controls">
       {!isLoading && hasData && (
-        <div className="pagination-info">
+        <p className="pagination-info" aria-live="polite">
           {startItem} - {endItem} of {totalRecords}
-        </div>
+        </p>
       )}
 
       <div className="pagination-controls">
@@ -53,7 +53,7 @@ const Pagination = ({
           </button>
         ))}
       </div>
-    </div>
+    </nav>
   );
 };
 

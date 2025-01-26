@@ -13,7 +13,7 @@ const ProjectsTableContainer = () => {
   } = useFetchData(FETCH_PROJECTS_URL, transformProjectData);
 
   return (
-    <div>
+    <article>
       {error && alert(error)}
       <PaginatedTable
         columns={projectColumns}
@@ -21,7 +21,7 @@ const ProjectsTableContainer = () => {
         isLoading={isLoading}
         customStyles={projectCustomStyles}
       />
-    </div>
+    </article>
   );
 };
 

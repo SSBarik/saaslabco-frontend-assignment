@@ -41,7 +41,7 @@ const PaginatedTable = ({
   );
 
   return (
-    <div className="paginated-table">
+    <section className="paginated-table">
       <Table
         columns={columns}
         data={paginatedData}
@@ -60,7 +60,7 @@ const PaginatedTable = ({
         totalRecords={data.length}
         isLoading={isLoading}
       />
-    </div>
+    </section>
   );
 };
 

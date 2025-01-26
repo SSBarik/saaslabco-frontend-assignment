@@ -3,9 +3,9 @@ import ProjectsTableContainer from "@containers/ProjectsTableContainer";
 
 const Home = () => {
   return (
-    <main>
+    <section>
       <ProjectsTableContainer />
-    </main>
+    </section>
   );
 };
 
