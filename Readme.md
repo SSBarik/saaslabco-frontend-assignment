@@ -1,5 +1,8 @@
 # Frontend Assignment
 
+### Project Link
+Explore the application: [Live Demo - KickStats](https://kick-stats.netlify.app/)
+
 
 ## Assignment
 
